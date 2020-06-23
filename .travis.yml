@@ -3,13 +3,8 @@ sudo: required
 services:
     - docker
 
-
 before_install:
     - docker build -t niraj/react-docker -f Dockerfile.dev .
 
-cache:
-    directories:
-        - node_modules
-
 script:
-    - docker run -e CI=true USERNAME/docker-react npm run test
+    - docker run -e CI=true niraj/react-docker npm run test
